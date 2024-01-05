@@ -16,7 +16,6 @@ const getPokemons = async (
     id: poke.url.split("/").at(-2) ?? "",
     name: poke.name,
   }));
-  
 
   return pokemons;
 };
