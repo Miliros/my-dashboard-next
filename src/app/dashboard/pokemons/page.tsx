@@ -4,6 +4,11 @@ import Image from 'next/image';
 import { PokemonGrid } from "@/app/pokemons/components/PokemonGrid";
 
 
+export const metadata = {
+  title: 'Pokemons',
+  description: '151'
+  }
+
 const getPokemons = async (
   limit = 20,
   offset = 0

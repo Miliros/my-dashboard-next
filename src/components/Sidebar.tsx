@@ -2,6 +2,8 @@ import React from "react";
 import Image from "next/image";
 import { IoBrowsersOutline, IoCalculator, IoLogoReact, IoFootball} from "react-icons/io5";
 import { SidebarMenuItem } from "./SideBarMenuItem";
+
+import mili from "../app/dashboard/milagros.jpg"
 const menuItems = [
   {
     path: "/dashboard/main",
@@ -45,14 +47,14 @@ export const Sidebar = () => {
           <span>
             <Image
               className="rounded-full w-8 h-8"
-              src="https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=128&q=80"
+              src={mili}
               alt="user avatar"
-              width={50}
-              height={50}
+              width={80}
+              height={60}
             />
           </span>
           <span className="text-sm md:text-base font-bold">
-            Milagros Rosales
+            Milagros Ros.
           </span>
         </a>
       </div>
@@ -63,6 +65,7 @@ export const Sidebar = () => {
             icon={e.icon}
             title={e.title}
             subtitle={e.subtitle}
+            key={ e.path }
           />
         ))}
 
