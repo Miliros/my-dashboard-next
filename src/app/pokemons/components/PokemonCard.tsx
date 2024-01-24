@@ -20,7 +20,7 @@ export const PokemonCard = ({ pokemon }: Props) => {
             height={100}
             alt={pokemon.name}
             priority={false}
-            className="h-16 object-contain"
+            className=" h-26 object-contain"
           />
           <p className="pt-2 text-lg font-semibold text-gray-50 capitalize">
             {name}
@@ -39,12 +39,12 @@ export const PokemonCard = ({ pokemon }: Props) => {
             href="/dashboard/main"
             className="px-4 py-2 hover:bg-gray-100 flex items-center"
           >
-            <div className="text-red-600">
-              <IoHeartOutline />
+            <div className="text-red-700 flex justify-center">
+              <IoHeartOutline  size={20}/>
             </div>
-            <div className="pl-3 flex justify-center items-center">
-              <p className="text-sm font-medium text-gray-800 leading-none">
-                Agregar a favorito
+            <div className="pl-3  justify-center items-center flex content-center">
+              <p className="text-sm font-medium text-gray-800 leading-none p-2 flex content-center">
+              Add to favorite
               </p>
               {/* <p className="text-xs text-gray-500">View your campaigns</p> */}
             </div>

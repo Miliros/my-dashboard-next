@@ -18,15 +18,15 @@ export const SidebarMenuItem = ({ path, icon, title, subtitle }: Props) => {
       href={path}
       className={`
             w-full px-2 inline-flex space-x-2 items-center border-b border-slate-700 py-3 hover:bg-white/5 transition ease-linear duration-150
-            ${currentPath === path ? "bg-blue-800" : ""}
+            ${currentPath === path ? "bg-green-800" : ""}
           `}
     >
       <div>
         <div>{icon}</div>
       </div>
       <div className="flex flex-col">
-        <span className="text-lg font-bold leading-5 text-white">{title}</span>
-        <span className="text-sm text-white/50 hidden md:block">
+        <span className="text-sm font-bold leading-5 text-white">{title}</span>
+        <span className="text-xs text-white/50 hidden md:block">
           {subtitle}
         </span>
       </div>
