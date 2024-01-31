@@ -1,9 +1,9 @@
 import React from "react";
 import Image from "next/image";
-import { IoBrowsersOutline, IoCalculator, IoLogoReact, IoFootball, IoHeartOutline} from "react-icons/io5";
+import { IoBrowsersOutline, IoCalculator, IoLogoReact, IoFootball, IoHeartOutline, IoCart} from "react-icons/io5";
 import { SidebarMenuItem } from "./SideBarMenuItem";
 
-import mili from "../app/dashboard/milagros.jpg"
+import mili from "../../app/dashboard/milagros.jpg"
 const menuItems = [
   {
     path: "/dashboard/main",
@@ -13,8 +13,8 @@ const menuItems = [
   },
   {
     path: "/dashboard/counter",
-    icon: <IoCalculator size={22} />,
-    title: "Counter",
+    icon: <IoCart size={22} clasName='text-green-600' />,
+    title: "Shopping Cart",
     subtitle: "Counter Client Side",
   },
   {

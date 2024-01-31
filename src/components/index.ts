@@ -1,3 +1,5 @@
-import { SimpleWidget } from './SimpleWidget';
-export { Sidebar }  from './Sidebar';
-export { SimpleWidget }
+import { SimpleWidget } from './dashboard/SimpleWidget';
+import { WidgetGrid } from './dashboard/WidgetGrid';
+export { Sidebar }  from './sidebar/Sidebar';
+export { SimpleWidget } from './dashboard/SimpleWidget';
+export {WidgetGrid} from './dashboard/WidgetGrid'
