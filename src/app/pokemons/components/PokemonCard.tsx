@@ -1,14 +1,48 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 
 import { SimplePokemon } from "../interfaces/simple-pokemon";
-import { IoHeartOutline } from "react-icons/io5";
+import { IoHeart, IoHeartOutline } from "react-icons/io5";
+import { useAppDispatch, useAppSelector } from "@/store";
+import { toggleFavorite } from "@/store/pokemons/pokemonsSlice";
+import { useState, useEffect } from "react";
 
 interface Props {
   pokemon: SimplePokemon;
 }
 export const PokemonCard = ({ pokemon }: Props) => {
   const { name, id } = pokemon;
+  const [isFavorite, setIsFavorite] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    const storedFavorites = JSON.parse(
+      localStorage.getItem("favorite-pokemons") ?? "{}"
+    );
+    setIsFavorite(!!storedFavorites[id]);
+    setLoading(false);
+  }, [id]);
+
+  const onToggle = () => {
+    const storedFavorites = JSON.parse(
+      localStorage.getItem("favorite-pokemons") ?? "{}"
+    );
+    const updatedFavorites = { ...storedFavorites }; // Copia los favoritos existentes
+
+    if (isFavorite) {
+      delete updatedFavorites[id];
+    } else {
+      updatedFavorites[id] = pokemon;
+    }
+
+    localStorage.setItem("favorite-pokemons", JSON.stringify(updatedFavorites)); // Actualiza localStorage
+    setIsFavorite(!isFavorite);
+    
+  };
   return (
     <div className="mx-auto right-0 mt-2 w-60">
       <div className="bg-white rounded overflow-hidden shadow-lg">
@@ -35,20 +69,31 @@ export const PokemonCard = ({ pokemon }: Props) => {
           </div>
         </div>
         <div className="border-b">
-          <Link
-            href="/dashboard/main"
-            className="px-4 py-2 hover:bg-gray-100 flex items-center"
+          <div
+            onClick={onToggle}
+            className="px-4 py-2 hover:bg-gray-100 flex items-center cursor-pointer"
           >
             <div className="text-red-700 flex justify-center">
-              <IoHeartOutline  size={20}/>
+              { isFavorite ? (
+                <IoHeart size={20} />
+              ) : (
+                <IoHeartOutline size={20} />
+              )}
             </div>
             <div className="pl-3  justify-center items-center flex content-center">
-              <p className="text-sm font-medium text-gray-800 leading-none p-2 flex content-center">
-              Add to favorite
-              </p>
-              {/* <p className="text-xs text-gray-500">View your campaigns</p> */}
+              {!loading ? (
+                isFavorite ? (
+                  <p className="text-sm font-medium text-gray-800 leading-none p-2 flex content-center">
+                    Is favorite
+                  </p>
+                ) : (
+                  <p className="text-sm font-medium text-gray-800 leading-none p-2 flex content-center">
+                    Not favorite
+                  </p>
+                )
+              ) : ".."}
             </div>
-          </Link>
+          </div>
         </div>
       </div>
     </div>
